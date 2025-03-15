@@ -1,0 +1,36 @@
+[submodule "submodules/terraform-example-foundation"]
+	path = submodules/terraform-example-foundation
+	url = git@github.com:terraform-google-modules/terraform-example-foundation.git
+[submodule "submodules/terraform-google-cloud-storage"]
+	path = submodules/terraform-google-cloud-storage
+	url = git@github.com:terraform-google-modules/terraform-google-cloud-storage.git
+[submodule "submodules/terraform-google-module-template"]
+	path = submodules/terraform-google-module-template
+	url = git@github.com:terraform-google-modules/terraform-google-module-template.git
+[submodule "submodules/terraform-google-group"]
+	path = submodules/terraform-google-group
+	url = git@github.com:terraform-google-modules/terraform-google-group.git
+[submodule "submodules/terraform-google-gcloud"]
+	path = submodules/terraform-google-gcloud
+	url = git@github.com:terraform-google-modules/terraform-google-gcloud.git
+[submodule "submodules/terraform-google-cloud-dns"]
+	path = submodules/terraform-google-cloud-dns
+	url = git@github.com:terraform-google-modules/terraform-google-cloud-dns.git
+[submodule "submodules/terraform-google-lb"]
+	path = submodules/terraform-google-lb
+	url = git@github.com:terraform-google-modules/terraform-google-lb.git
+[submodule "submodules/terraform-google-network"]
+	path = submodules/terraform-google-network
+	url = git@github.com:terraform-google-modules/terraform-google-network.git
+[submodule "submodules/terraform-google-bootstrap"]
+	path = submodules/terraform-google-bootstrap
+	url = git@github.com:terraform-google-modules/terraform-google-bootstrap.git
+[submodule "submodules/terraform-google-service-accounts"]
+	path = submodules/terraform-google-service-accounts
+	url = git@github.com:terraform-google-modules/terraform-google-service-accounts.git
+[submodule "submodules/terraform-google-secret"]
+	path = submodules/terraform-google-secret
+	url = git@github.com:terraform-google-modules/terraform-google-secret.git
+[submodule "submodules/terraform-google-endpoints-dns"]
+	path = submodules/terraform-google-endpoints-dns
+	url = git@github.com:terraform-google-modules/terraform-google-endpoints-dns.git
