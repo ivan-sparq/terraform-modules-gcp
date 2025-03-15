@@ -10,7 +10,7 @@ resource "google_project_service" "default" {
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
     "iamcredentials.googleapis.com",
-    "secretmanager.googleapis.com"
+    "secretmanager.googleapis.com",
     "serviceusage.googleapis.com",
   ])
   service            = each.key
