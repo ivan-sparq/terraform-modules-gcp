@@ -28,9 +28,6 @@
 [submodule "submodules/terraform-google-service-accounts"]
 	path = submodules/terraform-google-service-accounts
 	url = git@github.com:terraform-google-modules/terraform-google-service-accounts.git
-[submodule "submodules/terraform-google-secret"]
-	path = submodules/terraform-google-secret
-	url = git@github.com:terraform-google-modules/terraform-google-secret.git
 [submodule "submodules/terraform-google-endpoints-dns"]
 	path = submodules/terraform-google-endpoints-dns
 	url = git@github.com:terraform-google-modules/terraform-google-endpoints-dns.git

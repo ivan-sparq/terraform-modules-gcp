@@ -18,6 +18,7 @@ module "artifact_registry" {
   region    = "europe-west2"
   name      = "default-docker-repo"
   format    = "DOCKER"
+  admin_service_account = "terraform@my-project-id.iam.gserviceaccount.com"
   sa_read   = ["docker-read-sa@gcp.com"]
   sa_write  = ["docker-write-sa@gcp.com"]
 }

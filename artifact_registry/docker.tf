@@ -24,6 +24,6 @@ resource "google_artifact_registry_repository" "docker" {
 
   depends_on = [
     google_project_service.default,
-    google_project_iam_member.admin-sa-compute
+    google_project_iam_member.sa_admin
   ]
 }
