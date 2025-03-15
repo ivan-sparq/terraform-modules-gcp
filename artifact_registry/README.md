@@ -13,8 +13,7 @@ And it has been tested with OpenTofu 1.9
 
 ```hcl
 module "artifact_registry" {
-  source    = "ivan-sparq/terraform-modules-gcp"
-  version   = "~> 0.1"
+  source    = "github.com/ivan-sparq/terraform-modules-gcp//artifact_registry"
   project_id   = "my-project-id"
   region    = "europe-west2"
   name      = "default-docker-repo"
