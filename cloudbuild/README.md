@@ -1,4 +1,4 @@
-# CloudBuild Terraform Module
+# Cloud Build Terraform Module
 
 This module provides a comprehensive setup for Google Cloud Build with GitHub integration:
 
@@ -14,9 +14,8 @@ This module provides a comprehensive setup for Google Cloud Build with GitHub in
 
 ```hcl
 module "cloudbuild" {
-  source                = "./modules/cloudbuild/"
-  project_id           = var.project_id
-  project_number       = var.project_number
+  source              = "github.com/ivan-sparq/terraform-modules-gcp//cloudbuild"
+  project_id          = var.project_id
   region              = var.region
   github_owner        = "my-organization"
   github_repo         = "my-repo"
@@ -40,21 +39,20 @@ module "cloudbuild" {
 
 ## Input Variables
 
-| Name                     | Type         | Description                                                                                         |
-| ------------------------ | ------------ | --------------------------------------------------------------------------------------------------- |
-| `project_id`             | string       | Google Cloud Platform Project                                                                       |
-| `region`                 | string       | Region to use e.g. `europe-west4`. Region must support Cloud Run                                    |
-| `github_owner`           | string       | Name github org the repo belongs to                                                                 |
-| `github_repo`            | string       | Name github repo to create a trigger for                                                            |
-| `github_branch`          | string       | Create Terraform triggers                                                                           |
-| `github_connection_name` | string       | The name of the GitHub connection (See below on how to create that )                                |
-| `env`                    | string       | Name of env / TF workspace                                                                          |
-| `config_dir`             | string       | Directory of CloudBuild YAML files                                                                  |
-| `roles`                  | set(string)  | Extra roles to be given to CloudBuild                                                               |
-| `sa_name`                | string       | The name of the service account to create                                                           |
-| `enable_tf_triggers`     | bool         | Create Terraform triggers when creating a PR to `github_branch` and when merging to `github_branch` |
-| `enable_gha_auth`        | bool         | Authenticate GitHub Actions with GCP using Workload Identity Federation                             |
-| `notification_channels`  | list(string) | List of notification channels to send alerts to                                                     |
+| Name                     | Type        | Description                                                                                         |
+| ------------------------ | ----------- | --------------------------------------------------------------------------------------------------- |
+| `project_id`             | string      | Google Cloud Platform Project                                                                       |
+| `region`                 | string      | Region to use e.g. `europe-west4`.                                                                  |
+| `github_owner`           | string      | Name github org the repo belongs to                                                                 |
+| `github_repo`            | string      | Name github repo to create a trigger for                                                            |
+| `github_branch`          | string      | Create Terraform triggers for this branch (e.a. develop or main)                                    |
+| `github_connection_name` | string      | The name of the GitHub connection (See below on how to create that )                                |
+| `env`                    | string      | Name of terraform/tofu workspace                                                                    |
+| `config_dir`             | string      | Directory of CloudBuild YAML files, relative to the root of the repo                                |
+| `roles`                  | set(string) | Extra roles to be given to the Cloud Build (and Github Actions) service account(s)                  |
+| `sa_name`                | string      | The name of the service account to create that will be running the triggers                         |
+| `enable_tf_triggers`     | bool        | Create Terraform triggers when creating a PR to `github_branch` and when merging to `github_branch` |
+| `enable_gha_auth`        | bool        | Authenticate GitHub Actions with GCP using Workload Identity Federation                             |
 
 ## Features
 
@@ -71,10 +69,6 @@ When `enable_tf_triggers = true`, the module creates two Cloud Build triggers:
 
 - **PR Trigger**: Runs `terraform plan` when a pull request is created/updated
 - **Merge Trigger**: Runs `terraform apply` when changes are merged to the specified branch
-
-### Monitoring and Alerting
-
-The module sets up monitoring for Cloud Build operations and can send alerts to specified notification channels when builds fail.
 
 ## Setup Instructions
 
