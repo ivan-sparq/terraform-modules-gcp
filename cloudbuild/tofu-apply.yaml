@@ -1,0 +1,38 @@
+steps:
+  - id: tofu-init
+    name: ghcr.io/opentofu/opentofu:${_TF_VERSION}
+    args: ["init", "-no-color"]
+    dir: $_TF_DIR
+
+  - id: tofu-workspace
+    name: ghcr.io/opentofu/opentofu:${_TF_VERSION}
+    args: ["workspace", "select", "${_ENV}", "-no-color"]
+    dir: $_TF_DIR
+
+  - id: tofu-plan
+    name: ghcr.io/opentofu/opentofu:${_TF_VERSION}
+    args: ["plan", "-var-file=vars/${_ENV}.tfvars", "-no-color"]
+    dir: $_TF_DIR
+
+  - id: conditional-apply
+    name: bash
+    entrypoint: bash
+    dir: $_TF_DIR
+    args:
+      - -c
+      - |
+        if [ "${_DO_APPLY}" = "true" ]; then
+          tofu apply -var-file=vars/${_ENV}.tfvars -auto-approve -no-color
+        else
+          echo "Skipping apply step as _DO_APPLY is  set to FALSE"
+          exit 0
+        fi
+
+substitutions:
+  _ENV: default
+  _TF_VERSION: 1.9.0
+  _TF_DIR: "deployment/terraform/"
+  _DO_APPLY: "false"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
